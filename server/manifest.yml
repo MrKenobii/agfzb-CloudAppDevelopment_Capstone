@@ -1,11 +1,11 @@
   applications:
-  - name: djangoapp
+  - name: anilduyguc
     routes:
-      - route: anldygc35.mybluemix.net
+      - route: anilduyguc.mybluemix.net
     memory: 128M
     buildpack: python_buildpack
-  - name: djangoapp-nginx
+  - name: anilduyguc-nginx
     routes:
-      - route: anldygc35.mybluemix.net/static
+      - route: anilduyguc.mybluemix.net/static
     memory: 128M
     buildpack: staticfile_buildpack
