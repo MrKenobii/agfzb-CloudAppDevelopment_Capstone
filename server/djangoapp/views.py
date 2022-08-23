@@ -32,25 +32,29 @@ def contact(request):
 # Create a `login_request` view to handle sign in request
 def login_request(request):
     context = {}
-    # Handles POST request
+    
+    
     if request.method == "POST":
         # Get username and password from request.POST dictionary
         username = request.POST['username']
         password = request.POST['psw']
-        logger.error(username)
-        logger.error(password)
-        # Try to check if provide credential can be authenticated
+        print("Username: `{}` Password: `{}`".format(username, password))
         user = authenticate(username=username, password=password)
         if user is not None:
             # If user is valid, call login method to login current user
             login(request, user)
-            return render(request, 'djangoapp/index.html', context)
+            # return render(request, 'djangoapp/index.html', context)
+            return redirect("/djangoapp")
+            
         else:
             # If not, return to login page again
-            logger.error("Hellooo")
-            return render(request, 'djangoapp/index.html', context)
+            context["message"]="Username or password is incorrect."
+            # return render(request, 'djangoapp/index.html', context)
+            return redirect("/djangoapp")
+            
     else:
         return render(request, 'djangoapp/index.html', context)
+        
         
 
 # Create a `logout_request` view to handle sign out request
@@ -75,6 +79,10 @@ def registration_request(request):
         password = request.POST['psw']
         first_name = request.POST['firstname']
         last_name = request.POST['lastname']
+        logging.info(username)
+        logging.info(password)
+        logging.info(first_name)
+        logging.info(last_name)
         user_exist = False
         try:
             # Check if user already exists

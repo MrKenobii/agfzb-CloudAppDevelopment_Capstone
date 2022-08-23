@@ -44,6 +44,7 @@
                 {% else %}
                     <li>
                         <form action="{% url 'djangoapp:login' %}"  method="post" class="ml-auto">
+                            {% csrf_token %}
                             <div class="form-row">
                               <div class="col">
                                 <input class="form-control" type="text" id="username" name="username" placeholder="UserName">
@@ -52,18 +53,26 @@
                                 <input type="password" class="form-control" id="psw" name="psw" placeholder="Password">
                               </div>
                               <div class="col">
-                                <a class="btn btn-link" href="/djangoapp/login/">Sign In</a>
-                                <a class="btn btn-link" href="/djangoapp/signup/">Sign Up</a>
+                                <input class="btn btn-outline-success btn-sm" type="submit" value="Sign in">
+                                <a class="btn btn-link" href="{% url 'djangoapp:registration' %}">Sign Up</a>
                               </div>
                             </div>
                             
                           </form>
+<!-- 
+                          <form action="{% url 'djangoapp:login' %}"  method="post" class="ml-auto">
+                            {% csrf_token %}Important do not touch-->
+                            <!-- <input class="" type="text" id="username" name="username" placeholder="UserName:">
+                            <input type="password" id="pword" name="psw" placeholder="Password:">
+                            <input class="btn btn-outline-success btn-sm" type="submit" value="Login">
+                            <a class="btn btn-outline-warning btn-sm" type="submit" href="{% url 'djangoapp:registration' %}">Sign Up</a>
+                        </form> --> 
 
                     </li>
                 {% endif %}
             </ul>
         </div>
-</nav>
+    </nav>
 
 </body>
 
